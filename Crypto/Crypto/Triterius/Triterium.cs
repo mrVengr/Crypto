@@ -19,45 +19,7 @@ namespace Crypto
         public string keyword { get; set; }
         public string encode_type { get; set; }
 
-        public Triterius()
-        {
-            
-        }
-
-        public Window window;
-        public Grid grid;
-        public TextBox textbox;
-
-        public void Form()
-        {
-            window = new Window();
-            window.Height = 250;
-            window.Width = 350;
-            window.MaxHeight = 250;
-            window.MaxWidth = 350;
-            window.MinHeight = 250;
-            window.MinWidth = 350;
-
-            LinearGradientBrush myBrush = new LinearGradientBrush();
-            myBrush.GradientStops.Add(new GradientStop(Colors.White, 0.0));
-            myBrush.GradientStops.Add(new GradientStop(Colors.Black, 0.5));
-            myBrush.GradientStops.Add(new GradientStop(Colors.Red, 1.0));
-            window.Background = myBrush;
-
-            grid = new Grid();
-            grid.ShowGridLines = true;
-            RowDefinition rowDef1 = new RowDefinition();
-            RowDefinition rowDef2 = new RowDefinition();
-            RowDefinition rowDef3 = new RowDefinition();
-            grid.RowDefinitions.Add(rowDef1);
-            grid.RowDefinitions.Add(rowDef2);
-            grid.RowDefinitions.Add(rowDef3);
-
-
-            window.Content = grid;
-
-            window.ShowDialog();
-        }
+        public Triterius() { }        
 
         public override string Encrypt()
         {
@@ -136,8 +98,6 @@ namespace Crypto
         {
             return (int)keyword[pos % keyword.Length];
         }
-
-
-        //private int 
+        
     }
 }

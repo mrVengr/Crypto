@@ -7,15 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -49,6 +40,7 @@ namespace Crypto
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cbCodeName.Items.Add("Caesar");
+            cbCodeName.Items.Add("Triterius");
         }
 
         private void Send(string Text)
@@ -108,16 +100,16 @@ namespace Crypto
         private void ButtonEncrypt_Click(object sender, RoutedEventArgs e)
         {
             string CryptoClass = cbCodeName.Text;
-            if (CryptoClass != "")
+            if (CryptoClass != "" && tbMessage.Text!="")
             {
                 Type T = Type.GetType("Crypto." + CryptoClass);
                 object Obj = Activator.CreateInstance(T);
                 ((ParentCypher)Obj).Message = tbMessage.Text;
                 string messageToSend = ((ParentCypher)Obj).Encrypt();
-                //Send("lolo");
-                MessageBox.Show(messageToSend);
+                Send(messageToSend);
+
             }
-            else MessageBox.Show("Choose CryptoClass");
+            else MessageBox.Show("Choose CryptoClass and type message");
 
         }
 
@@ -125,13 +117,5 @@ namespace Crypto
         {
             Parse();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Send("kawaii");
-        }
-
-
-
     }
 }
